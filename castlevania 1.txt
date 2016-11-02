@@ -1,0 +1,16 @@
+-github
+-programming movement
+-level design (michael)
+-art
+	long blond hair
+	slender
+	reds and purples
+	muted color
+	torn cloak (wolf-skinned?)
+-enemies (wilfredo)
+-attacking(function: raycast, mouse snap-to)
+-input.mouseposition (convert to world coordinates Camera.main.screentoworldpoint)
+-DEATH (BRETT THE GRIM REAPER)2:32 PM 10/27/2016
+
+
+
