@@ -8,10 +8,13 @@ public class PlayerController : MonoBehaviour
     bool isGrounded = false;
     Rigidbody2D myRigidbody;
 
+
+
     // Use this for initialization
     void Start()
     {
         myRigidbody = this.GetComponent<Rigidbody2D>();
+
 
     }
 
@@ -42,5 +45,10 @@ public class PlayerController : MonoBehaviour
     void OnCollisionEnter2D(Collision2D collision)
     {
         isGrounded = true;
+    }
+
+    public void setPosition(float x, float y)
+    {
+        this.transform.position = new Vector2(x, y);
     }
 }
