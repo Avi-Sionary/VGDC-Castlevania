@@ -513,7 +513,7 @@ PlayerSettings:
   XboxOne::VR::enabledDevices: []
   iOS::VR::enabledDevices: []
   tvOS::VR::enabledDevices: []
-  cloudProjectId: 
-  projectName: 
-  organizationId: 
+  cloudProjectId: bc8e556b-bc9f-4c77-b78e-4dc97569725a
+  projectName: VGDC Castlevania
+  organizationId: bgalkows
   cloudEnabled: 0

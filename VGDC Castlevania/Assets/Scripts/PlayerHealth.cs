@@ -18,7 +18,7 @@ public class PlayerHealth : MonoBehaviour
     {
         playerController = GetComponent<PlayerController>();
         currentHealth = startingHealth;
-        lives = 5;
+        lives = 3;
 	}
 	
 	// Update is called once per frame
