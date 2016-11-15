@@ -26,12 +26,12 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKey(KeyCode.A))
         {
-            transform.localScale = new Vector3(-0.5282174f, 0.5282174f, 0.5282174f);
+            transform.localScale = new Vector3(-0.25f, 0.25f, 0.5282174f);
         }
 
         if (Input.GetKey(KeyCode.D))
         {
-            transform.localScale = new Vector3(0.5282174f, 0.5282174f, 0.5282174f);
+            transform.localScale = new Vector3(0.25f, 0.25f, 0.5282174f);
         }
 
     }
