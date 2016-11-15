@@ -26,12 +26,12 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKey(KeyCode.A))
         {
-            transform.localScale = new Vector3(-0.5282174f, 0.5282174f, 0.5282174f);
+            transform.localScale = new Vector3(-0.25f, 0.25f, 0.5282174f);
         }
 
         if (Input.GetKey(KeyCode.D))
         {
-            transform.localScale = new Vector3(0.5282174f, 0.5282174f, 0.5282174f);
+            transform.localScale = new Vector3(0.25f, 0.25f, 0.5282174f);
         }
 
     }
@@ -51,7 +51,7 @@ public class PlayerController : MonoBehaviour
             this.GetComponent<Rigidbody2D>().MovePosition((Vector2)this.transform.position + new Vector2(-speed * Time.deltaTime, 0));
         }
 
-        if (Input.GetKeyDown(KeyCode.K) && isGrounded)
+        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
             Debug.Log("JUMP!");
             this.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, 250));

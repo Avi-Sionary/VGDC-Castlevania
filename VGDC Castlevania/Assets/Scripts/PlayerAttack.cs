@@ -4,18 +4,21 @@ using System.Collections;
 public class PlayerAttack : MonoBehaviour
 {
     private bool attacking = false;
+    //bool to check whether the player is attacking or not
 
     private float attackTimer = 0;
     private float attackCoolDown = 0.3f;
+    //cooldown between attacks.
 
-    public Collider2D attackTrigger;
+    public int dmg = 20;
+    //how much damage your attack does
 
     private Animator anim;
+    //animations!
 
     void Awake()
     {
         anim = this.GetComponent<Animator>();
-        attackTrigger.enabled = false;
     }
 
     void Update()
@@ -26,7 +29,6 @@ public class PlayerAttack : MonoBehaviour
             attacking = true;
             attackTimer = attackCoolDown;
 
-            attackTrigger.enabled = true;
             /// <summary>
             /// Grab the world coordinates of where the mouse is when left-clicked
             /// </summary>
@@ -80,25 +82,26 @@ public class PlayerAttack : MonoBehaviour
             if (hit2 && hit2.collider.CompareTag("Enemy"))
             {
                 Debug.LogFormat("An enemy was hit and it is located at: {0}: ", hit2.collider.transform.position);
+                GetComponent<Collider2D>().SendMessageUpwards("Damage", dmg);
             }
             else
             {
                 Debug.Log("Nothing was hit");
             }
 
-            if (attacking)
-            {
-                if(attackTimer > 0)
-                {
-                    attackTimer -= Time.deltaTime;
-                }
-                else
-                {
-                    attacking = false;
-                    attackTrigger.enabled = false;
-                }
-            }
+            
 
+        }
+        if (attacking)
+        {
+            if (attackTimer > 0)
+            {
+                attackTimer -= Time.deltaTime;
+            }
+            else
+            {
+                attacking = false;
+            }
         }
         anim.SetBool("Attacking", attacking);
     }
