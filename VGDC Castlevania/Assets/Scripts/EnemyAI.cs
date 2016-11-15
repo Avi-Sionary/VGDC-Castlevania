@@ -10,7 +10,7 @@ public class EnemyAI : MonoBehaviour
 
     void start()
     {
-        Player = GameObject.FindGameObjectWithTag("Player");
+        Player = GameObject.FindGameObjectWithTag("PlayerController");
         enemy = enemy.GetComponent<EnemyActions>();
     }
     void Update()
@@ -18,7 +18,7 @@ public class EnemyAI : MonoBehaviour
         enemy.update();
         enemy.EnemyAttack();
     }
-    void OnTriggerStay(BoxCollider2D other)
+    void OnTriggerStay2D(BoxCollider2D collider2D)
     {
         enemy.TransformEnemy();
     }
@@ -36,7 +36,7 @@ public class EnemyActions : MonoBehaviour
 
     public void start()
     {
-        Player = GameObject.FindGameObjectWithTag("Player");
+        Player = GameObject.FindGameObjectWithTag("PlayerHealth");
     }
     public void update()
     {
@@ -50,11 +50,11 @@ public class EnemyActions : MonoBehaviour
             EnemyAttackTime = 5; /*Cooldown Time for next attack*/
         }
     }
-    public void EnemyDeath(int playerdamage)
+    public void EnemyDeath(int dmg)
     {
         Debug.Log("Enemy took damage");
 
-        EnemyHealthPoints -= playerdamage;
+        EnemyHealthPoints -= dmg;
 
         if (EnemyHealthPoints <= 0) /*If the enemy dies from player*/
         {
