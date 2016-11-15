@@ -4,13 +4,13 @@ using System.Collections;
 public class EnemyAI : MonoBehaviour
 {
     public BoxCollider2D enemyboundry;
-    GameObject Player;
+    PlayerController PlayerController;
 
     EnemyActions enemy;
 
     void start()
     {
-        Player = GameObject.FindGameObjectWithTag("PlayerController");
+        PlayerController = GetComponent<PlayerController>();
         enemy = enemy.GetComponent<EnemyActions>();
     }
     void Update()
@@ -18,7 +18,7 @@ public class EnemyAI : MonoBehaviour
         enemy.update();
         enemy.EnemyAttack();
     }
-    void OnTriggerStay2D(BoxCollider2D collider2D)
+    void OnTriggerStay2D(BoxCollider2D Collider2D)
     {
         enemy.TransformEnemy();
     }
@@ -32,11 +32,11 @@ public class EnemyActions : MonoBehaviour
     public int EnemyAttackTime = 5;
     public int EnemyHealthPoints = 20;
 
-    GameObject Player;
+    PlayerController PlayerController;
 
     public void start()
     {
-        Player = GameObject.FindGameObjectWithTag("PlayerController");
+        PlayerController = GetComponent<PlayerController>();
     }
     public void update()
     {
@@ -79,7 +79,7 @@ public class EnemyActions : MonoBehaviour
         {
             Debug.Log("Enemy did damage");
 
-            Player.GetComponent<PlayerController>().TakeDamage(1); /*The Amount of Damage dealt by the enemy*/
+            PlayerController.GetComponent<PlayerController>().TakeDamage(1); /*The Amount of Damage dealt by the enemy*/
         }
     }
 }
