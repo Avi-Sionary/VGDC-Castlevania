@@ -36,7 +36,7 @@ public class EnemyActions : MonoBehaviour
 
     public void start()
     {
-        Player = GameObject.FindGameObjectWithTag("PlayerHealth");
+        Player = GameObject.FindGameObjectWithTag("PlayerController");
     }
     public void update()
     {
@@ -50,11 +50,11 @@ public class EnemyActions : MonoBehaviour
             EnemyAttackTime = 5; /*Cooldown Time for next attack*/
         }
     }
-    public void EnemyDeath(int dmg)
+    public void EnemyDeath()
     {
         Debug.Log("Enemy took damage");
 
-        EnemyHealthPoints -= dmg;
+        EnemyHealthPoints -= 20; /*Amount damage being taken*/
 
         if (EnemyHealthPoints <= 0) /*If the enemy dies from player*/
         {
@@ -77,7 +77,9 @@ public class EnemyActions : MonoBehaviour
     {
         if(Vector2.Distance(transform.position, character.position) <= EnemyAttackRange)
         {
-            Player.SendMessage("TakeDamage", 1); /*The Amount of Damage dealt by the enemy*/
+            Debug.Log("Enemy did damage");
+
+            Player.GetComponent<PlayerController>().TakeDamage(1); /*The Amount of Damage dealt by the enemy*/
         }
     }
 }
