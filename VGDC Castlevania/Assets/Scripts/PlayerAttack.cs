@@ -4,13 +4,17 @@ using System.Collections;
 public class PlayerAttack : MonoBehaviour
 {
     private bool attacking = false;
+    //bool to check whether the player is attacking or not
 
     private float attackTimer = 0;
     private float attackCoolDown = 0.3f;
+    //cooldown between attacks.
 
     public int dmg = 20;
+    //how much damage your attack does
 
     private Animator anim;
+    //animations!
 
     void Awake()
     {

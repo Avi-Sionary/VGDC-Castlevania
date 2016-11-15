@@ -51,7 +51,7 @@ public class PlayerController : MonoBehaviour
             this.GetComponent<Rigidbody2D>().MovePosition((Vector2)this.transform.position + new Vector2(-speed * Time.deltaTime, 0));
         }
 
-        if (Input.GetKeyDown(KeyCode.K) && isGrounded)
+        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
             Debug.Log("JUMP!");
             this.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, 250));
