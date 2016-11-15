@@ -7,6 +7,16 @@ public class PlayerController : MonoBehaviour
     public float speed = 5;
     public bool isGrounded = false;
     Rigidbody2D myRigidbody;
+
+    public int startingHealth = 100;
+    public int currentHealth;
+    public int lives;
+    //we need this to keep track of player lives.  
+    //We can set it to whatever in the start function.
+
+    bool isDead;
+    bool damaged;
+
     private Animator anim;
 
 
@@ -15,6 +25,8 @@ public class PlayerController : MonoBehaviour
     {
         myRigidbody = this.GetComponent<Rigidbody2D>();
         anim = this.GetComponent<Animator>();
+        currentHealth = startingHealth;
+        lives = 3;
 
     }
 
@@ -57,6 +69,36 @@ public class PlayerController : MonoBehaviour
             this.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, 250));
             isGrounded = false;
         }
+    }
+
+    void Death()
+    {
+        isDead = true;
+
+        // Play any death sounds or animations that we want here.
+        if (lives > 0)
+        {
+            Respawn();
+            lives--;
+        }
+
+    }
+
+    public void TakeDamage(int amount)
+    {
+        damaged = true;
+        currentHealth -= amount;
+
+        if (currentHealth <= 0 && !isDead)
+        {
+            Death();
+        }
+    }
+
+    void Respawn()
+    {
+        currentHealth = startingHealth;
+        isDead = false;
     }
 
     void OnCollisionEnter2D(Collision2D collision)
