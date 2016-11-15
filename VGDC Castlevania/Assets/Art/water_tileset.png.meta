@@ -1,12 +1,9 @@
 fileFormatVersion: 2
-guid: 20bdcff68468d4a4dab3a93dcac196d2
-timeCreated: 1478411907
+guid: fa4c48287c8ecf945b68b6f9edf00a59
+timeCreated: 1479105313
 licenseType: Free
 TextureImporter:
-  fileIDToRecycleName:
-    21300000: Block
-    21300002: Pillar
-    21300004: Small Pillar
+  fileIDToRecycleName: {}
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -33,7 +30,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     filterMode: -1
-    aniso: 16
+    aniso: -1
     mipBias: -1
     wrapMode: 1
   nPOTScale: 0
@@ -41,7 +38,7 @@ TextureImporter:
   rGBM: 0
   compressionQuality: 50
   allowsAlphaSplitting: 0
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -54,46 +51,7 @@ TextureImporter:
   buildTargetSettings: []
   spriteSheet:
     serializedVersion: 2
-    sprites:
-    - serializedVersion: 2
-      name: Block
-      rect:
-        serializedVersion: 2
-        x: 1065
-        y: 0
-        width: 44
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: Pillar
-      rect:
-        serializedVersion: 2
-        x: 710
-        y: 120
-        width: 231
-        height: 38
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: Small Pillar
-      rect:
-        serializedVersion: 2
-        x: 710
-        y: 120
-        width: 139
-        height: 38
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
+    sprites: []
     outline: []
   spritePackingTag: 
   userData: 
