@@ -3,6 +3,7 @@ using System.Collections;
 
 public class PlayerAttack : MonoBehaviour
 {
+    //I AM AVI HEAR ME ROAR!
     private bool attacking = false;
     //bool to check whether the player is attacking or not
 
@@ -111,5 +112,5 @@ public class PlayerAttack : MonoBehaviour
         }
         anim.SetBool("Attacking", attacking);
     }
-
+    
 }
