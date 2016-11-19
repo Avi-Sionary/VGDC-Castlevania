@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
     bool damaged;
 
     private Animator anim;
+    public GameObject currentCheckpoint;
 
 
     // Use this for initialization
@@ -71,9 +72,10 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void Death()
+    public void Death()
     {
         isDead = true;
+        Debug.Log("Player Died");
 
         // Play any death sounds or animations that we want here.
         if (lives > 0)
@@ -97,8 +99,11 @@ public class PlayerController : MonoBehaviour
 
     void Respawn()
     {
+        Debug.Log("Player respawn");
         currentHealth = startingHealth;
         isDead = false;
+
+        this.transform.position = currentCheckpoint.transform.position;
     }
 
     void OnCollisionEnter2D(Collision2D collision)
@@ -110,4 +115,13 @@ public class PlayerController : MonoBehaviour
     {
         this.transform.position = new Vector2(x, y);
     }
+
+    ////this is a test method to kill the player
+    //public void OnTriggerEnter2D(Collider2D other)
+    //{
+    //    //if (other.name == "Player")
+    //    //{
+    //    //    Death();
+    //    //}
+    //}
 }

@@ -59,4 +59,6 @@ public class EnemyActions : MonoBehaviour
             PlayerController.GetComponent<PlayerController>().TakeDamage(1); /*The Amount of Damage dealt by the enemy*/
         }
     }
+
+
 }

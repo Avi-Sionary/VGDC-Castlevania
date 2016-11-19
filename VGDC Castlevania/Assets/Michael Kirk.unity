@@ -16707,6 +16707,7 @@ GameObject:
   - 212: {fileID: 1529978142}
   - 114: {fileID: 1529978145}
   - 61: {fileID: 1529978144}
+  - 114: {fileID: 1529978146}
   m_Layer: 0
   m_Name: Bat
   m_TagString: Enemy
@@ -16741,7 +16742,7 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
+  m_SortingLayerID: 59717805
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 50367b30b19287346ab07dd536507a1c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -16775,6 +16776,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.2786885, y: 0.19}
 --- !u!114 &1529978145
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1529978141}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c164f4bdf4e2eec49a46fa5f92481bf5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyboundry: {fileID: 0}
+--- !u!114 &1529978146
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}

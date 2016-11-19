@@ -83,6 +83,7 @@ public class PlayerAttack : MonoBehaviour
             {
                 Debug.LogFormat("An enemy was hit and it is located at: {0}: ", hit2.collider.transform.position);
                 GetComponent<Collider2D>().SendMessageUpwards("Damage", dmg);
+                /// 'SendMessage Damage has no receiver!'
             }
             else
             {

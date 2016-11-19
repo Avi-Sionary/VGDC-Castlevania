@@ -55,6 +55,7 @@ public class PlayerHealth : MonoBehaviour
     {
         currentHealth = startingHealth;
         playerController.setPosition(0, 0);
+        playerController.Death();
         isDead = false;
     }
 }
