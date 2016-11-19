@@ -3,16 +3,17 @@ using System.Collections;
 
 public class EnemyActions : MonoBehaviour
 {
-    public int speed = 3;
+    public int speed = 5;
     public int EnemyAttackRange = 1;
-    public int EnemyAttackTime = 5;
+    public int EnemyAttackTime = 25;
     public int EnemyHealthPoints = 40;
 
     PlayerController PlayerController;
 
-    public void Start()
+    public void Awake()
     {
-        PlayerController = GetComponent<PlayerController>();
+
+        PlayerController = GameObject.Find("Player").GetComponent<PlayerController>();
     }
     public void Update()
     {
@@ -23,7 +24,7 @@ public class EnemyActions : MonoBehaviour
         if (EnemyAttackTime == 0)
         {
             EnemyAttack();
-            EnemyAttackTime = 5; /*Cooldown Time for next attack*/
+            EnemyAttackTime = 25; /*Cooldown Time for next attack*/
         }
     }
     public void EnemyDeath()
@@ -40,13 +41,13 @@ public class EnemyActions : MonoBehaviour
             Destroy(this);
         }
     }
-    public void OnTriggerStay2D(Collider2D Collider2D)  /*Enemy Movement*/
+   public void OnTriggerStay2D(Collider2D other)  /*Enemy Movement*/
     {
-        transform.LookAt(PlayerController.transform.position);
 
         if (Vector2.Distance(transform.position, PlayerController.transform.position) > EnemyAttackRange)
         {
             transform.Translate(new Vector2(speed * Time.deltaTime, 0));
+            //Vector2.MoveTowards(transform.position, PlayerController.transform.position, speed);
         }
     }
     public void EnemyAttack()

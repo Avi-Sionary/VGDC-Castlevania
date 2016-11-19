@@ -24,7 +24,7 @@ public class PlayerController : MonoBehaviour
 
 
     // Use this for initialization
-    void Start()
+    void Awake()
     {
         myRigidbody = this.GetComponent<Rigidbody2D>();
         anim = this.GetComponent<Animator>();
@@ -58,14 +58,14 @@ public class PlayerController : MonoBehaviour
             Debug.Log("Move right");
             isMovingRight = true;
             //this.transform.Translate(speed * Time.deltaTime, 0, 0);
-            this.GetComponent<Rigidbody2D>().MovePosition((Vector2)this.transform.position + new Vector2(speed * Time.deltaTime, 0));
+            this.GetComponent<Rigidbody2D>().MovePosition((Vector2)this.transform.position + new Vector2(speed * Time.deltaTime, this.GetComponent<Rigidbody2D>().velocity.y));
         }
         if (Input.GetKey(KeyCode.A))
         {
             Debug.Log("Move left");
             isMovingLeft = true;
             //this.transform.Translate(-speed * Time.deltaTime, 0, 0);
-            this.GetComponent<Rigidbody2D>().MovePosition((Vector2)this.transform.position + new Vector2(-speed * Time.deltaTime, 0));
+            this.GetComponent<Rigidbody2D>().MovePosition((Vector2)this.transform.position + new Vector2(-speed * Time.deltaTime, this.GetComponent<Rigidbody2D>().velocity.y));
         }
 
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)

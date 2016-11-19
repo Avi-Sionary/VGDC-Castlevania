@@ -17,14 +17,14 @@ public class PlayerAttack : MonoBehaviour
     private Animator anim;
     //animations!
 
-    public EnemyAI enemy;
+    //public EnemyActions enemy;
 
     
 
     void Awake()
     {
         anim = this.GetComponent<Animator>();
-        enemy = GetComponent<EnemyAI>();
+        //enemy = GetComponent<EnemyActions>();
     }
 
     void Update()
@@ -89,7 +89,8 @@ public class PlayerAttack : MonoBehaviour
             {
                 Debug.LogFormat("An enemy was hit and it is located at: {0}: ", hit2.collider.transform.position);
                 // TO BE FIXED!!!!!!!! enemy.EnemyAttack();
-                GetComponent<Collider2D>().SendMessageUpwards("Damage", dmg);
+                //enemy.EnemyDeath();
+                hit2.collider.GetComponent<EnemyActions>().EnemyDeath();
             }
             else
             {
