@@ -89,4 +89,34 @@ public class PlayerController : MonoBehaviour
     {
         this.transform.position = new Vector2(x, y);
     }
+    public void Death()
+    {
+        isDead = true;
+
+        // Play any death sounds or animations that we want here.
+        if (lives > 0)
+        {
+            Respawn();
+            lives--;
+        }
+
+    }
+
+    public void TakeDamage(int amount)
+    {
+        damaged = true;
+        currentHealth -= amount;
+
+        if (currentHealth <= 0 && !isDead)
+        {
+            Death();
+        }
+    }
+
+    public void Respawn()
+    {
+        currentHealth = startingHealth;
+        this.setPosition(0, 0);
+        isDead = false;
+    }
 }
