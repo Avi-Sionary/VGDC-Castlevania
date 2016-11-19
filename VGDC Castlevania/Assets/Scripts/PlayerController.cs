@@ -41,31 +41,32 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKey(KeyCode.A))
         {
-            transform.localScale = new Vector3(-0.25f, 0.25f, 0.5282174f);
+            //transform.localScale = new Vector3(-0.25f, 0.25f, 0.5282174f);
         }
 
         if (Input.GetKey(KeyCode.D))
         {
-            transform.localScale = new Vector3(0.25f, 0.25f, 0.5282174f);
+            //transform.localScale = new Vector3(0.25f, 0.25f, 0.5282174f);
         }
 
-    }
-
-    void FixedUpdate()
-    {
         if (Input.GetKey(KeyCode.D))
         {
             Debug.Log("Move right");
             isMovingRight = true;
-            //this.transform.Translate(speed * Time.deltaTime, 0, 0);
-            this.GetComponent<Rigidbody2D>().MovePosition((Vector2)this.transform.position + new Vector2(speed * Time.deltaTime, this.GetComponent<Rigidbody2D>().velocity.y));
+            isMovingLeft = false;
+            this.transform.Translate(speed * Time.deltaTime, 0, 0);
+            this.GetComponent<SpriteRenderer>().flipX = false;
+            //this.GetComponent<Rigidbody2D>().MovePosition((Vector2)this.transform.position + new Vector2(speed * Time.deltaTime, this.GetComponent<Rigidbody2D>().velocity.y));
         }
         if (Input.GetKey(KeyCode.A))
         {
             Debug.Log("Move left");
             isMovingLeft = true;
-            //this.transform.Translate(-speed * Time.deltaTime, 0, 0);
-            this.GetComponent<Rigidbody2D>().MovePosition((Vector2)this.transform.position + new Vector2(-speed * Time.deltaTime, this.GetComponent<Rigidbody2D>().velocity.y));
+            isMovingRight = false;
+            this.transform.Translate(-speed * Time.deltaTime, 0, 0);
+            this.GetComponent<SpriteRenderer>().flipX = true;
+            //this.transform.localScale = new Vector3(-1, 1, 1);
+            //this.GetComponent<Rigidbody2D>().MovePosition((Vector2)this.transform.position + new Vector2(-speed * Time.deltaTime, this.GetComponent<Rigidbody2D>().velocity.y));
         }
 
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
@@ -76,9 +77,8 @@ public class PlayerController : MonoBehaviour
             isMovingLeft = false;
             isMovingRight = false;
         }
-    }
 
-    
+    }
 
     void OnCollisionEnter2D(Collision2D collision)
     {
