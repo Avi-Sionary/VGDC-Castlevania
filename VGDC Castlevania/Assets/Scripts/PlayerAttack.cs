@@ -16,9 +16,14 @@ public class PlayerAttack : MonoBehaviour
     private Animator anim;
     //animations!
 
+    public EnemyAI enemy;
+
+    
+
     void Awake()
     {
         anim = this.GetComponent<Animator>();
+        enemy = GetComponent<EnemyAI>();
     }
 
     void Update()
@@ -82,6 +87,7 @@ public class PlayerAttack : MonoBehaviour
             if (hit2 && hit2.collider.CompareTag("Enemy"))
             {
                 Debug.LogFormat("An enemy was hit and it is located at: {0}: ", hit2.collider.transform.position);
+                // TO BE FIXED!!!!!!!! enemy.EnemyAttack();
                 GetComponent<Collider2D>().SendMessageUpwards("Damage", dmg);
             }
             else

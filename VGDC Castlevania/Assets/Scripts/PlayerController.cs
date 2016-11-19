@@ -4,8 +4,11 @@ using System.Collections;
 public class PlayerController : MonoBehaviour
 {
 
-    public float speed = 5;
-    public bool isGrounded = false;
+    public float speed = 2;
+    bool isGrounded = false;
+    bool isMovingLeft = false;
+    bool isMovingRight = false;
+
     Rigidbody2D myRigidbody;
 
     public int startingHealth = 100;
@@ -53,12 +56,14 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKey(KeyCode.D))
         {
             Debug.Log("Move right");
+            isMovingRight = true;
             //this.transform.Translate(speed * Time.deltaTime, 0, 0);
             this.GetComponent<Rigidbody2D>().MovePosition((Vector2)this.transform.position + new Vector2(speed * Time.deltaTime, 0));
         }
         if (Input.GetKey(KeyCode.A))
         {
             Debug.Log("Move left");
+            isMovingLeft = true;
             //this.transform.Translate(-speed * Time.deltaTime, 0, 0);
             this.GetComponent<Rigidbody2D>().MovePosition((Vector2)this.transform.position + new Vector2(-speed * Time.deltaTime, 0));
         }
@@ -68,38 +73,12 @@ public class PlayerController : MonoBehaviour
             Debug.Log("JUMP!");
             this.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, 250));
             isGrounded = false;
+            isMovingLeft = false;
+            isMovingRight = false;
         }
     }
 
-    void Death()
-    {
-        isDead = true;
-
-        // Play any death sounds or animations that we want here.
-        if (lives > 0)
-        {
-            Respawn();
-            lives--;
-        }
-
-    }
-
-    public void TakeDamage(int amount)
-    {
-        damaged = true;
-        currentHealth -= amount;
-
-        if (currentHealth <= 0 && !isDead)
-        {
-            Death();
-        }
-    }
-
-    void Respawn()
-    {
-        currentHealth = startingHealth;
-        isDead = false;
-    }
+    
 
     void OnCollisionEnter2D(Collision2D collision)
     {
