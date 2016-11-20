@@ -46,7 +46,7 @@ public class EnemyActions : MonoBehaviour
 
         if (Vector2.Distance(transform.position, PlayerController.transform.position) > EnemyAttackRange)
         {
-            transform.Translate(new Vector2(speed * Time.deltaTime, 0));
+            //transform.Translate(new Vector2(speed * Time.deltaTime, 0));
             //Vector2.MoveTowards(transform.position, PlayerController.transform.position, speed);
         }
     }
