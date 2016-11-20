@@ -66,7 +66,7 @@ public class EnemyActions : MonoBehaviour
         {
             Debug.Log("Enemy did damage");
 
-            PlayerController.TakeDamage(1); /*The Amount of Damage dealt by the enemy*/
+            PlayerController.TakeDamage(5); /*The Amount of Damage dealt by the enemy*/
         }
     }
 
