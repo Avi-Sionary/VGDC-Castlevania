@@ -5,7 +5,7 @@ public class EnemyActions : MonoBehaviour
 {
     public int speed = 5;
     public int EnemyAttackRange = 1;
-    public int EnemyAttackTime = 25;
+    public int EnemyAttackTime = 5;
     public int EnemyHealthPoints = 40;
 
     PlayerController PlayerController;
@@ -24,7 +24,7 @@ public class EnemyActions : MonoBehaviour
         if (EnemyAttackTime == 0)
         {
             EnemyAttack();
-            EnemyAttackTime = 25; /*Cooldown Time for next attack*/
+            EnemyAttackTime = 5; /*Cooldown Time for next attack*/
         }
     }
     public void EnemyDeath()
@@ -43,11 +43,21 @@ public class EnemyActions : MonoBehaviour
     }
    public void OnTriggerStay2D(Collider2D other)  /*Enemy Movement*/
     {
-
-        if (Vector2.Distance(transform.position, PlayerController.transform.position) > EnemyAttackRange)
+        if (other == GameObject.Find("Player").GetComponent<Collider2D>())
         {
-            //transform.Translate(new Vector2(speed * Time.deltaTime, 0));
-            //Vector2.MoveTowards(transform.position, PlayerController.transform.position, speed);
+            if (Vector2.Distance(transform.position, PlayerController.transform.position) > EnemyAttackRange)
+            {
+                if(PlayerController.transform.position.x > this.transform.position.x)
+                {
+                    transform.Translate(new Vector2(speed * Time.deltaTime, 0));
+                }
+                else
+                {
+                    transform.Translate(new Vector2(-speed * Time.deltaTime, 0));
+                }
+                //transform.Translate(new Vector2(speed * Time.deltaTime, 0));
+                //Vector2.MoveTowards(transform.position, PlayerController.transform.position, speed);
+            }
         }
     }
     public void EnemyAttack()
