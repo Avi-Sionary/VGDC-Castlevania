@@ -1,15 +1,22 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.Collections;
 
 public class PlayerController : MonoBehaviour
 {
     //I AM AVI HEAR ME ROAR
     public float speed = 2;
+    public float speedv = 10f;
     bool isGrounded = false;
     bool isMovingLeft = false;
     bool isMovingRight = false;
 
-    Rigidbody2D myRigidbody;
+    bool Moving = false;
+
+    private Rigidbody2D myRigidbody;
+
+    public LevelManager levelManager;
+    public GameObject currentSpawn;
 
     public int startingHealth = 100;
     public int currentHealth;
@@ -39,28 +46,20 @@ public class PlayerController : MonoBehaviour
         anim.SetBool("Grounded", isGrounded);
         anim.SetFloat("Speed", speed);
 
-        if (Input.GetKey(KeyCode.A))
-        {
-            //transform.localScale = new Vector3(-0.25f, 0.25f, 0.5282174f);
-        }
-
-        if (Input.GetKey(KeyCode.D))
-        {
-            //transform.localScale = new Vector3(0.25f, 0.25f, 0.5282174f);
-        }
-
-        if (Input.GetKey(KeyCode.D))
+        if (myRigidbody.velocity.x == 0 && Input.GetKey(KeyCode.D))
         {
             Debug.Log("Move right");
+            anim.SetBool("Moving", true);
             isMovingRight = true;
             isMovingLeft = false;
             this.transform.Translate(speed * Time.deltaTime, 0, 0);
             this.GetComponent<SpriteRenderer>().flipX = false;
             //this.GetComponent<Rigidbody2D>().MovePosition((Vector2)this.transform.position + new Vector2(speed * Time.deltaTime, this.GetComponent<Rigidbody2D>().velocity.y));
         }
-        if (Input.GetKey(KeyCode.A))
+        else if (myRigidbody.velocity.x == 0 && Input.GetKey(KeyCode.A))
         {
             Debug.Log("Move left");
+            anim.SetBool("Moving", true);
             isMovingLeft = true;
             isMovingRight = false;
             this.transform.Translate(-speed * Time.deltaTime, 0, 0);
@@ -68,16 +67,19 @@ public class PlayerController : MonoBehaviour
             //this.transform.localScale = new Vector3(-1, 1, 1);
             //this.GetComponent<Rigidbody2D>().MovePosition((Vector2)this.transform.position + new Vector2(-speed * Time.deltaTime, this.GetComponent<Rigidbody2D>().velocity.y));
         }
+        else
+        {
+            anim.SetBool("Moving", false);
+        }
 
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
             Debug.Log("JUMP!");
-            this.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, 250));
+            this.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, 200));
             isGrounded = false;
             isMovingLeft = false;
             isMovingRight = false;
         }
-
     }
 
     void OnCollisionEnter2D(Collision2D collision)
@@ -98,6 +100,11 @@ public class PlayerController : MonoBehaviour
         {
             Respawn();
             lives--;
+            Debug.Log(lives + " lives left!");
+        }
+        else
+        {
+            GameOver();
         }
 
     }
@@ -106,8 +113,9 @@ public class PlayerController : MonoBehaviour
     {
         damaged = true;
         currentHealth -= amount;
+        Debug.Log(currentHealth + " health");
 
-        if (currentHealth <= 0 && !isDead)
+        if (currentHealth <= 0)
         {
             Death();
         }
@@ -116,7 +124,14 @@ public class PlayerController : MonoBehaviour
     public void Respawn()
     {
         currentHealth = startingHealth;
-        this.setPosition(0, 0);
+        Debug.Log("You respawned with " + currentHealth + " health.");
+        transform.position = currentSpawn.transform.position;
         isDead = false;
+    }
+
+    public void GameOver()
+    {
+        Debug.Log("GAME OVER");
+        SceneManager.LoadScene("GameOverScene");
     }
 }
